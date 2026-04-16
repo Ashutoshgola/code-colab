@@ -11,10 +11,10 @@ import admin from "../firebase/firebaseAdmin.js";
 const verifyFirebaseToken = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
-        //res.status(401).json({ error: "No token provided" });
-        console.log("Auth Header:", authHeader);
-        return;
-    }
+  console.log("❌ No token provided");
+  res.status(401).json({ error: "No token provided" });
+  return;
+}
     const idToken = authHeader.split("Bearer ")[1];
     try {
         const decodedToken = yield admin.auth().verifyIdToken(idToken);
@@ -22,9 +22,9 @@ const verifyFirebaseToken = (req, res, next) => __awaiter(void 0, void 0, void 0
         next();
     }
     catch (error) {
-        //res.status(401).json({ error: "Unauthorized" });
-        console.log("Token:", idToken);
-        return;
-    }
+  console.log("❌ Invalid token");
+  res.status(401).json({ error: "Unauthorized" });
+  return;
+}
 });
 export default verifyFirebaseToken;

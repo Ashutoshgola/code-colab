@@ -9,8 +9,7 @@ interface AuthenticatedRequest extends Request {
 
 const router = express.Router();
 
-router.get(
-  "/getInfo",
+router.get("/getInfo",
   verifyFirebaseToken,
   async (req: AuthenticatedRequest, res: Response) => {
     const uid = req.user?.uid;

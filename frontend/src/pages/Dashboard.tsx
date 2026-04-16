@@ -90,7 +90,24 @@ const Dashboard = () => {
         try {
           setLoadingUser(true);
           const idToken = await firebaseUser.getIdToken();
-          const res = await axios.get("http://localhost:8000/api/user/getInfo", {
+          await axios.post(
+          "http://localhost:8000/api/auth/signup",
+          {
+            uid: firebaseUser.uid,
+            email: firebaseUser.email,
+            displayName: firebaseUser.displayName,
+            provider: "google"
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${idToken}`,
+            },
+          }
+        );
+
+        console.log("User saved in DB ✅");
+
+          const res = await axios.get(`${backendUrl}/api/user/getInfo`, {
             headers: {
               Authorization: `Bearer ${idToken}`,
             },
@@ -110,6 +127,7 @@ const Dashboard = () => {
 
     return () => unsubscribe();
   }, []); // Only run once on mount
+
 
   const handleCreateRoom = async () => {
     if (!user) {
