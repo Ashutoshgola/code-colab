@@ -27,7 +27,7 @@ export const githubLogin = async () => {
       alert("Account already exists. Please login using Google.");
       return null; // 🔥 important
     }
-    console.error("GitHub login error:", err);
+    console.error("GitHub login error:");
     return null;
   }
 };
