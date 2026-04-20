@@ -5,7 +5,6 @@ import {
   GithubAuthProvider,
 } from "firebase/auth";
 import { auth } from "@/firebase.js";
-import { error } from "console";
 
 export const googleLogin = async () => {
   const provider = new GoogleAuthProvider();
@@ -28,7 +27,7 @@ export const githubLogin = async () => {
       alert("Account already exists. Please login using Google.");
       return null; // 🔥 important
     }
-    console.error("GitHub login error:", error);
+    console.error("GitHub login error:", err);
     return null;
   }
 };

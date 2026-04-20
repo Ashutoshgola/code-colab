@@ -91,7 +91,7 @@ const Dashboard = () => {
           setLoadingUser(true);
           const idToken = await firebaseUser.getIdToken();
           await axios.post(
-          "http://localhost:8000/api/auth/signup",
+          `${backendUrl}/api/auth/signup`,
           {
             uid: firebaseUser.uid,
             email: firebaseUser.email,

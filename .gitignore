@@ -5,3 +5,4 @@ backend/serviceAccountKey.json
 serviceAccount.json
 .env
 node_modules/
+frontend/.env
