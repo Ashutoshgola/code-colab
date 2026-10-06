@@ -39,17 +39,20 @@ code-colab/
 
 Clone the repository:
 
+```text
 git clone https://github.com/Ashutoshgola/code-colab.git
 cd code-colab
 
+```
 Start the application:
 
+```text
 docker compose up -d
-
+```
 Stop the application:
-
+```text
 docker compose down
-
+```
 ## ☸️ Kubernetes
 
 The project includes Kubernetes manifests for:
@@ -61,14 +64,14 @@ The project includes Kubernetes manifests for:
 - Ingress
 
 Deploy the application:
-
+```text
 kubectl apply -f k8s/
-
+```
 Check the deployment:
-
+```text
 kubectl get pods -n codecolab
 kubectl get services -n codecolab
-
+```
 ## 👨‍💻 Author
 
 Ashutosh Gola
