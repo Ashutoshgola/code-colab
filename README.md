@@ -34,7 +34,7 @@ code-colab/
 ├── k8s/                  # Kubernetes manifests
 ├── docker-compose.yml    # Docker Compose configuration
 └── .gitignore
-
+```
 ## 🐳 Run with Docker
 
 Clone the repository:
@@ -69,25 +69,8 @@ Check the deployment:
 kubectl get pods -n codecolab
 kubectl get services -n codecolab
 
-## 🏗️ Architecture
-
-User
-  │
-  ▼
-Nginx / Ingress
-  │
-  ├── Frontend
-  │
-  ├── /api ──────► Backend ──────► MongoDB
-  │
-  └── /socket.io ► Backend
-
-## 🔐 Security
-
-Sensitive files such as `.env`, Firebase credentials, Kubernetes secrets, and local MongoDB data are excluded from version control.
-
 ## 👨‍💻 Author
 
-**Ashutosh Gola**
+Ashutosh Gola
 
 GitHub: https://github.com/Ashutoshgola
