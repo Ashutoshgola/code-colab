@@ -8,3 +8,4 @@ node_modules/
 frontend/.env
 k8s/secrets.yml
 mongodb-data/
+.DS_Store
