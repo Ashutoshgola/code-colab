@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: codecolab
+spec:
+  replicas: 2
+  selector: 
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: codecolab-backend
+          image: ashutosh78955/codecolab-backend:latest
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          ports:
+            - containerPort: 8000
+          env:
+            - name: MONGODB_URI
+              value: "mongodb://mongodb-service:27017/codecollab"
+            - name: FIREBASE_SERVICE_ACCOUNT
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secret
+                  key: FIREBASE_SERVICE_ACCOUNT
+            - name: PORT
+              value: "8000"
+  
